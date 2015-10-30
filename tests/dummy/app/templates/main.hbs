@@ -1,0 +1,15 @@
+<div>
+  <h2>Name</h2>
+  {{#inline-edit-field
+    value=model.name}}
+    {{model.name}}
+  {{/inline-edit-field}}
+
+  <h2>Bio</h2>
+  {{#inline-edit-field
+    value=model.bio}}
+    {{model.bio}}
+  {{else}}
+    {{textarea value=model.bio}}
+  {{/inline-edit-field}}
+</div>

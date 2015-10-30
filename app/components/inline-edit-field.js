@@ -1,0 +1,1 @@
+export { default } from 'inline-edit-field/components/inline-edit-field';

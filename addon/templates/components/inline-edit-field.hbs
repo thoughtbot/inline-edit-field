@@ -1,0 +1,40 @@
+{{#if isEditing}}
+  <form class="editable is-editing"
+    {{action "stopEditing" model on="submit"}}>
+
+    {{#if (hasBlock "inverse")}}
+      {{yield to="inverse"}}
+    {{else}}
+      {{input value=value}}
+    {{/if}}
+
+    <div class="save-and-cancel">
+      <input type="submit"
+        data-role="stop-editing"
+        value={{commitButtonText}}
+        class="save-button">
+
+      <button data-role="cancel-editing"
+        class="cancel-link"
+        {{action "cancelEditing"}}>
+        &times;
+      </button>
+    </div>
+  </form>
+{{else}}
+  <button class="inline-edit-trigger"
+    data-role="start-editing"
+    {{action "startEditing"}}>
+    {{#if valueEmpty}}
+      <span class="inline-edit-prompt" data-role="inline-edit-prompt">
+        {{emptyPrompt}}
+      </span>
+    {{/if}}
+
+    {{#if hasBlock}}
+      {{yield}}
+    {{else}}
+      {{value}}
+    {{/if}}
+  </button>
+{{/if}}
